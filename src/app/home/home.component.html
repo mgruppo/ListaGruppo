@@ -1,0 +1,37 @@
+<main class="principal">
+    <h2 class="Lista de Alumnos">Titulo</h2>
+    <!--parrafo informativo-->
+    <p class="p-uno">Parrafo 1</p>
+    <p class="p-dos">Parrafo 2</p>  
+
+    <div class="container-fluid">
+        <h1 class="mb-3">
+          Tabla de usuarios
+        </h1>
+        <table class="table table-stripped">
+          <thead>
+            <tr>
+              <th>Legajo</th>
+              <th>Nombre completo</th>
+              <th>E-mail</th>
+              <th>Edad</th>
+              <th>Fecha de nacimiento</th>
+              <th>Regular</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let alumno of alumnos"  [ngClass]="alumno.activo ? 'table-success' : ''">
+              <td>{{alumno.legajo}}</td>
+              <td>{{alumno.fullName | uppercase }}</td>
+              <td>{{alumno.email}}</td>
+              <td>{{alumno.edad}}</td>
+              <td>{{alumno.nacimiento | date: 'medium' }}</td>
+              <td>{{alumno.activo}}</td>
+              <td><button [id]="alumno.legajo" (click)="alumno.alternarRegularidad($event)">Cambiar Regularidad</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+</main>
